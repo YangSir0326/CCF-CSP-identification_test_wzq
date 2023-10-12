@@ -1,1 +1,26 @@
-
+#define _CRT_SECURE_NO_WARNINGS
+//201312 - 1	出现次数最多的数
+#include <stdio.h>
+int main() {
+	int n, i, max, num;
+	scanf("%d", &n);	/*获取输入数字个数1-1000*/
+	int number[1000], counter[10001];	/*number存数-表数字个数，counter计数-数字1至10000出现次数*/ 
+	for (i = 0; i <= 10000; i++) {
+		counter[i] = 0;		/*初始化*/
+	}
+	for (i = 0; i < n; i++) {
+		scanf("%d", &number[i]);	/*获取输入数字*/
+		counter[number[i]]++;
+	}
+	max = 0;	/*初始化并记录最大计数*/
+	for (i = 0; i < 10000; i++) {
+		if (counter[i]) {
+			if (counter[i] > max) {
+				max = counter[i];
+				num = i;	/*循环遍历，若更大则更新*/
+			}
+		}
+	}
+	printf("%d", num);
+	return 0;
+}
